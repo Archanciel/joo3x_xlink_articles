@@ -1,41 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<install version="1.6" type="plugin" group="content">
+<extension version="3.3" type="plugin" group="content" method="upgrade">
 	<name>Content - XLinkArticles</name>
 	<author>Jean-Pierre Schnyder</author>
 	<creationDate>July 2011</creationDate>
-	<copyright>Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.</copyright>
-	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-	<authorEmail>jp.schnyder@gmail.com</authorEmail>
-	<authorUrl>plusconscient.net</authorUrl>
-	<version>1.61</version>
+	<author>JP Schnyder</author>
+	<authorEmail>webmaster@plusconscient.net</authorEmail>
+	<authorUrl>http://plusconscient.net</authorUrl>
+	<version>${extension_version}</version><!-- ${extension_version defined 
+		in ./build.properties -->
+	<copyright>plusconscient.net 2013-2018</copyright>
 	<description>
-		This plugin inserts/removes a link to the saved article in all the articles referenced in the link section of the saved article. 
-		The link is inserted at the beginning or at the end of the link section list, according to the plugin setup.
-		<p/>
-		WARNING: In Joomla 1.5, the plugin requires the activation of the System Mootools Upgrade plugin to work properly !</description>
+		This plugin inserts/removes a link to the saved article in
+		all the articles referenced in the link section of the saved article.
+		The link is inserted at the beginning or at the end of the link
+		section list, according to the plugin setup.
+	</description>
+
 	<files>
 		<filename plugin="xlink_articles">xlink_articles.php</filename>
-		<folder>xlink_articles/</folder>
+		<filename>helper.php</filename>
+		<filename>xlink_articles_processor.php</filename>
+		<filename>index.html</filename>
 	</files>
 
-    <languages>
-		<language tag="en-GB">language/en-GB/en-GB.plg_content_xlink_articles.ini</language>
-		<language tag="fr-FR">language/fr-FR/fr-FR.plg_content_xlink_articles.ini</language>
-    </languages>
-	<params>
-		<param name="link_section_tag" type="text" default="Ecouter également" label="LINK_SECTION_TAG_LBL" description="LINK_SECTION_TAG_DESC"/>
-        <param name="add_space_after_link_section_tag" type="radio" default="1" label="ADD_SPACE_AFTER_LINK_SECTION_TAG_LBL" description="ADD_SPACE_AFTER_LINK_SECTION_TAG_DESC">
-            <option value="0">ADD_SPACE_AFTER_LINK_SECTION_TAG_VAL_NO</option>
-            <option value="1">ADD_SPACE_AFTER_LINK_SECTION_TAG_VAL_YES</option>
-        </param>
-		<param name="link_separator" type="text" default=", " label="LINK_SEPARATOR_LBL" description="LINK_SEPARATOR_DESC"/>
-        <param name="add_space_after_link_separator" type="radio" default="1" label="ADD_SPACE_AFTER_LINK_SEPARATOR_LBL" description="ADD_SPACE_AFTER_LINK_SEPARATOR_DESC">
-            <option value="0">ADD_SPACE_AFTER_LINK_SEPARATOR_VAL_NO</option>
-            <option value="1">ADD_SPACE_AFTER_LINK_SEPARATOR_VAL_YES</option>
-        </param>
-        <param name="link_add_default_position" type="radio" default="0" label="LINK_ADD_DEFAULT_POSITION_LBL" description="LINK_ADD_DEFAULT_POSITION_DESC">
-            <option value="0">LINK_ADD_DEFAULT_POSITION_VAL_FIRST</option>
-            <option value="1">LINK_ADD_DEFAULT_POSITION_VAL_LAST</option>
-        </param>
-	</params>
-</install>
+	<languages folder="administrator/language">
+		<language tag="en-GB">en-GB/en-GB.plg_content_xlink_articles.ini
+		</language>
+		<language tag="en-GB">en-GB/en-GB.plg_content_xlink_articles.sys.ini
+		</language>
+		<language tag="fr-FR">fr-FR/fr-FR.plg_content_xlink_articles.ini
+		</language>
+		<language tag="fr-FR">fr-FR/fr-FR.plg_content_xlink_articles.sys.ini
+		</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="link_section_tag" type="text" default="Ecouter également"
+					label="LINK_SECTION_TAG_LBL" description="LINK_SECTION_TAG_DESC" />
+				<field name="add_space_after_link_section_tag" type="radio"
+					class="btn-group btn-group-yesno" default="1"
+					label="ADD_SPACE_AFTER_LINK_SECTION_TAG_LBL" description="ADD_SPACE_AFTER_LINK_SECTION_TAG_DESC">
+					<option value="0">ADD_SPACE_AFTER_LINK_SECTION_TAG_VAL_NO
+					</option>
+					<option value="1">ADD_SPACE_AFTER_LINK_SECTION_TAG_VAL_YES
+					</option>
+				</field>
+				<field name="link_separator" type="text" default=", "
+					label="LINK_SEPARATOR_LBL" description="LINK_SEPARATOR_DESC" />
+				<field name="add_space_after_link_separator" type="radio"
+					class="btn-group btn-group-yesno" default="1"
+					label="ADD_SPACE_AFTER_LINK_SEPARATOR_LBL" description="ADD_SPACE_AFTER_LINK_SEPARATOR_DESC">
+					<option value="0">ADD_SPACE_AFTER_LINK_SEPARATOR_VAL_NO</option>
+					<option value="1">ADD_SPACE_AFTER_LINK_SEPARATOR_VAL_YES
+					</option>
+				</field>
+				<field name="link_add_default_position" type="radio" default="0"
+					class="btn-group btn-group-yesno" label="LINK_ADD_DEFAULT_POSITION_LBL"
+					description="LINK_ADD_DEFAULT_POSITION_DESC">
+					<option value="0">LINK_ADD_DEFAULT_POSITION_VAL_FIRST</option>
+					<option value="1">LINK_ADD_DEFAULT_POSITION_VAL_LAST</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>

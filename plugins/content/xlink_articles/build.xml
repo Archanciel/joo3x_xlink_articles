@@ -1,52 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="plusconscient.net" basedir="." default="build_install_zip">
+	<property file="./build.properties" /><!-- contains component version 
+		number -->
 
 	<property name="artifact.name" value="xlink_articles" />
 	<property name="joomla.root"
-		value="D:\Development\web\htdocs\plusconscient15_dev" />
+		value="D:\Development\web\htdocs\joo3x_plg_xlink_articles" />
 	<property name="plg.content.folder" value="${joomla.root}\plugins\content" />
 	<property name="src" value="${plg.content.folder}\${artifact.name}" />
+	<property name="packaging.dir" value="${joomla.root}\tmp\packaging\${artifact.name}" />
 	<property name="install.zip.file.dest"
 		value="D:\Development\web\htdocs\plusconscient15_int\attachments"
 		override="true" />
-	<property name="version">1.61</property>
+	<property name="version">v${extension_version}</property>
 
-	<!-- copying the two plugin files to the plugin content dir as required by Joomla 1.5 -->
-	<target name="copy_to_plg_content_folder" description="Copies required files to Joomla15 plugin content folder">
-		<copy todir="${plg.content.folder}" overwrite="true">
+	<target name="build_packaging_dir" description="Copies files to plugin packaging dir">
+		<delete dir="${packaging.dir}" includeemptydirs="true" verbose="false" />
+		<copy todir="${packaging.dir}" overwrite="true">
 			<fileset dir="${src}">
 				<include name="${artifact.name}.php" />
+				<include name="helper.php" />
+				<include name="${artifact.name}_processor.php" />
+				<include name="index.html" />
+			</fileset>
+		</copy>
+		<copy todir="${joomla.root}/administrator" overwrite="true"> <!-- updating the language files in the dev environent -->
+			<fileset dir="${src}">
+				<include name="language/**" />
+			</fileset>
+		</copy>
+		<copy todir="${packaging.dir}/administrator" overwrite="true">
+			<fileset dir="${src}">
+				<include name="language/**" />
+			</fileset>
+		</copy>
+		<copy todir="${packaging.dir}" overwrite="true">
+			<filterchain>
+				<expandproperties /><!-- applies Phing properties to joomla xml files -->
+			</filterchain>
+			<fileset dir="${src}">
 				<include name="${artifact.name}.xml" />
 			</fileset>
 		</copy>
 	</target>
-	
-	<!-- copying the plugin language files to the administrator dir -->
-	<target name="copy_to_admin_language_folder" description="Copies language files to Joomla15 administrator language folder">
-		<copy todir="${joomla.root}/administrator" overwrite="true">
-			<fileset refid="languages"/>
-		</copy>
-	</target>
-	
-	<fileset dir="${plg.content.folder}" id="allfiles">
-		<include name="${artifact.name}.php" />
-		<include name="${artifact.name}.xml" />
-		<include name="xlink_articles/helper.php" />
-		<include name="xlink_articles/xlink_articles_processor.php" />
-		<include name="xlink_articles/index.html" />
-	</fileset>
 
-	<fileset dir="${src}" id="languages">
-		<include name="language/en-GB/en-GB.plg_content_${artifact.name}.ini" />
-		<include name="language/fr-FR/fr-FR.plg_content_${artifact.name}.ini" />
-	</fileset>
-
-	<!-- Copy Target -->
-	<target name="build_install_zip" depends="copy_to_plg_content_folder, copy_to_admin_language_folder" description="build the install zip">
+	<target name="build_install_zip" depends="build_packaging_dir"
+		description="build the install zip">
 		<delete file="${install.zip.file.dest}/plg_${artifact.name}_${version}.zip" />
 		<zip destfile="${install.zip.file.dest}/plg_${artifact.name}_${version}.zip">
-			<fileset refid="allfiles" />
-			<fileset refid="languages" />
+			<fileset dir="${packaging.dir}">
+				<include name="**/**" />
+			</fileset>
 		</zip>
 	</target>
+
 </project>
