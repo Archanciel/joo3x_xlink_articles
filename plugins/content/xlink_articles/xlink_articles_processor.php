@@ -1,6 +1,6 @@
 <?php
 
-require_once (dirname(__FILE__) . DS . 'helper.php');
+require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . 'helper.php');
 
 /**
  * This class performs the addition of the cross links pointing to the source
@@ -165,7 +165,7 @@ class XlinkArticlesProcessor {
 			$targetArticle->introtext = $newIntroText;
 				
 			if (! $targetArticle->store ()) {
-				JError::raiseError ( 500, $targetArticle->getError () );
+				JFactory::getApplication()->enqueueMessage($targetArticle->getError (), 'error');
 			} else {
 				$this->userMessageArray[] = '+++ ' . sprintf(JText::_('CROSS_LINK_ADDED_IN_ARTICLE'), $targetArticleId, $targetArticle->title);
 			}
@@ -216,7 +216,7 @@ class XlinkArticlesProcessor {
 		$targetArticle->introtext = $newIntroText;
 
 		if (! $targetArticle->store ()) {
-			JError::raiseError ( 500, $targetArticle->getError () );
+			JFactory::getApplication()->enqueueMessage($targetArticle->getError (), 'error');
 		} else {
 			$this->userMessageArray[] = '---- ' . sprintf(JText::_('CROSS_LINK_REMOVED_FROM_ARTICLE'), $targetArticleId, $targetArticle->title);
 		}

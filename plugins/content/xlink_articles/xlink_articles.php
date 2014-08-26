@@ -6,14 +6,14 @@ defined ( '_JEXEC' ) or die ( 'Restricted access' );
 jimport ( 'joomla.plugin.plugin' );
 jimport ( 'joomla.error.log' );
 
-$processorFilePath = dirname(__FILE__) . DS . 'xlink_articles_processor.php';
+$processorFilePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'xlink_articles_processor.php';
 
 if (file_exists($processorFilePath)) {
 	// execution in context of PHPUnit tests execution
 	require_once ($processorFilePath);
 } else {
 	// execution triggered by Joomla 1.5
-	require_once (dirname(__FILE__) . DS . 'plg_xlink_articles' . DS . 'xlink_articles_processor.php');
+	require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . 'plg_xlink_articles' . DIRECTORY_SEPARATOR . 'xlink_articles_processor.php');
 }
 
 /**
@@ -62,7 +62,7 @@ class plgContentXLink_articles extends JPlugin {
 		// obtaining plugin parms
 
 		$plugin = JPluginHelper::getPlugin ( 'content', 'xlink_articles' );
-		$pluginParams = new JParameter ( $plugin->params );
+		$pluginParams = new JRegistry($plugin->params);
 
 		$linkSectionStartString = trim($pluginParams->get('link_section_tag'));
 		$isSpaceAddedlinkSectionStartString = $pluginParams->get('add_space_after_link_section_tag');
