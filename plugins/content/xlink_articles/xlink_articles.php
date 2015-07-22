@@ -6,15 +6,7 @@ defined ( '_JEXEC' ) or die ( 'Restricted access' );
 jimport ( 'joomla.plugin.plugin' );
 jimport ( 'joomla.error.log' );
 
-$processorFilePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'xlink_articles_processor.php';
-
-if (file_exists($processorFilePath)) {
-	// execution in context of PHPUnit tests execution
-	require_once ($processorFilePath);
-} else {
-	// execution triggered by Joomla 1.5
-	require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . 'plg_xlink_articles' . DIRECTORY_SEPARATOR . 'xlink_articles_processor.php');
-}
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'xlink_articles_processor.php';
 
 /**
  * This plugin fires when an article is saved. Provided "@Ecouter également " (NOTE THE @ !)
@@ -36,29 +28,27 @@ class plgContentXLink_articles extends JPlugin {
 	/**
 	 * Constructor
 	 *
-	 * For php4 compatability we must not use the __constructor as a constructor for plugins
-	 * because func_get_args ( void ) returns a copy of all passed arguments NOT references.
-	 * This causes problems with cross-referencing necessary for the observer design pattern.
-	 *
-	 * @param object $subject The object to observe
-	 * @param object $params  The object that holds the plugin parameters
-	 * @since 1.5
+	 * @param 	$subject
+	 * @param	array $config
 	 */
-	function plgContentXLink_articles(&$subject, $params) {
-		parent::__construct ( $subject, $params );
+	function __construct(&$subject, $config = array()) {
+		// call parent constructor
+		parent::__construct($subject, $config);
 	}
-
+	
 	/**
 	 * After save content method
 	 * Article is passed by reference, but after the save, so no changes will be saved.
 	 * Method is called right after the content is saved.
 	 *
 	 *
-	 * @param 	$article		A JTableContent object
-	 * @param 	$isNew			If the content is just about to be created
-	 * @return	void
+	 * $param	$context 		The context of the content passed to the plugin.
+	 * @param 	$article		A reference to the JTableContent object that was saved 
+	 * 							which holds the article data.
+	 * @param 	$isNew			A boolean which is set to true if the content was created.
+	 * @return true
 	 */
-	public function onAfterContentSave($article, $isNew) {
+	public function onContentAfterSave($context, $article, $isNew) {
 		// obtaining plugin parms
 
 		$plugin = JPluginHelper::getPlugin ( 'content', 'xlink_articles' );

@@ -143,7 +143,7 @@ class XlinkArticlesProcessor {
 
 		$linksInLinkSection = trim($linkSectionComponents [2],"\xa0");
 
-		$targetArticleIntroText = $targetArticle->introtext;
+		$targetArticleIntroText = html_entity_decode($targetArticle->introtext);
 		$found = strpos ( $targetArticleIntroText, $sourceArticleIdAlias );
 
 		if ($found === false) {
@@ -190,7 +190,7 @@ class XlinkArticlesProcessor {
 			return;
 		}
 
-		$targetArticleIntroText = $targetArticle->introtext;
+		$targetArticleIntroText = html_entity_decode($targetArticle->introtext);
 		$found = strpos ( $targetArticleIntroText, $sourceArticleIdAlias );
 
 		if ($found === false) {

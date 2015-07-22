@@ -72,3 +72,6 @@ composer
 TEST
 administrator
 .externalToolBuilders
+/robots.txt.dist
+/CONTRIBUTING.md
+/README.md

@@ -14,14 +14,14 @@ class XLinkArticlesHelper {
 		$skippedLinkIds = array();
 		
 		foreach ( $linksArray as $link ) {
-			preg_match ( "#;id=(\d+):#", $link, $matches );
+			preg_match ( "#&(id|Itemid)=(\d+)#", $link, $matches );
 			
 			if (preg_match ( "#class=\"LK\"#", $link ) == 1) {
-				$linkIds [] = $matches [1];
+				$linkIds [] = $matches [2];
 			} elseif (preg_match ( "#class=\"ULK\"#", $link ) == 1) {
-				$unlinkIds [] = $matches [1];
+				$unlinkIds [] = $matches [2];
 			} else {
-				$skippedLinkIds [] =  $matches [1];
+				$skippedLinkIds [] =  $matches [2];
 			}
 		}
 
@@ -91,9 +91,9 @@ class XLinkArticlesHelper {
 	 * Returns the matched groups in the link section.
 	 * 
 	 * Ex:
-	 * 		[0] => Ecouter également <a href="index.php?option=com_content&amp;view=article&amp;id=279:philippe-jurgensen&amp;catid=77:francais">Retraites, un futur sans avenir</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=330:michel-tarrier-dictature-verte&amp;catid=47:francais">Michel Tarrier - dictature verte</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=280:les-causes-structurelles-de-la-crise-alimentaire-en-2008&amp;catid=51:francais">Les causes structurelles de la crise alimentaire en 2008</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=46:albert-jacquard-surpopulation&amp;catid=49:francais">Interview d'Albert Jacquard sur le thème de la surpopulation</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=78:la-contrainte-carbone&amp;catid=47:francais">Jean-Marc Jancovici - La contrainte carbone</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=122:le-premier-economiste-digne-de-ce-nom-nicholas-georgescu-roegen&amp;catid=56:francais">Nicholas Georgescu-Roegen, économiste de génie</a></p>
+	 * 		[0] => Ecouter également <a href="index.php?option=com_content&amp;view=article&id=279:philippe-jurgensen&amp;catid=77:francais">Retraites, un futur sans avenir</a>, <a href="index.php?option=com_content&amp;view=article&id=330:michel-tarrier-dictature-verte&amp;catid=47:francais">Michel Tarrier - dictature verte</a>, <a href="index.php?option=com_content&amp;view=article&id=280:les-causes-structurelles-de-la-crise-alimentaire-en-2008&amp;catid=51:francais">Les causes structurelles de la crise alimentaire en 2008</a>, <a href="index.php?option=com_content&amp;view=article&id=46:albert-jacquard-surpopulation&amp;catid=49:francais">Interview d'Albert Jacquard sur le thème de la surpopulation</a>, <a href="index.php?option=com_content&amp;view=article&id=78:la-contrainte-carbone&amp;catid=47:francais">Jean-Marc Jancovici - La contrainte carbone</a>, <a href="index.php?option=com_content&amp;view=article&id=122:le-premier-economiste-digne-de-ce-nom-nicholas-georgescu-roegen&amp;catid=56:francais">Nicholas Georgescu-Roegen, économiste de génie</a></p>
      *		[1] => Ecouter également 
-     *		[2] => <a href="index.php?option=com_content&amp;view=article&amp;id=279:philippe-jurgensen&amp;catid=77:francais">Retraites, un futur sans avenir</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=330:michel-tarrier-dictature-verte&amp;catid=47:francais">Michel Tarrier - dictature verte</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=280:les-causes-structurelles-de-la-crise-alimentaire-en-2008&amp;catid=51:francais">Les causes structurelles de la crise alimentaire en 2008</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=46:albert-jacquard-surpopulation&amp;catid=49:francais">Interview d'Albert Jacquard sur le thème de la surpopulation</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=78:la-contrainte-carbone&amp;catid=47:francais">Jean-Marc Jancovici - La contrainte carbone</a>, <a href="index.php?option=com_content&amp;view=article&amp;id=122:le-premier-economiste-digne-de-ce-nom-nicholas-georgescu-roegen&amp;catid=56:francais">Nicholas Georgescu-Roegen, économiste de génie</a>
+     *		[2] => <a href="index.php?option=com_content&amp;view=article&id=279:philippe-jurgensen&amp;catid=77:francais">Retraites, un futur sans avenir</a>, <a href="index.php?option=com_content&amp;view=article&id=330:michel-tarrier-dictature-verte&amp;catid=47:francais">Michel Tarrier - dictature verte</a>, <a href="index.php?option=com_content&amp;view=article&id=280:les-causes-structurelles-de-la-crise-alimentaire-en-2008&amp;catid=51:francais">Les causes structurelles de la crise alimentaire en 2008</a>, <a href="index.php?option=com_content&amp;view=article&id=46:albert-jacquard-surpopulation&amp;catid=49:francais">Interview d'Albert Jacquard sur le thème de la surpopulation</a>, <a href="index.php?option=com_content&amp;view=article&id=78:la-contrainte-carbone&amp;catid=47:francais">Jean-Marc Jancovici - La contrainte carbone</a>, <a href="index.php?option=com_content&amp;view=article&id=122:le-premier-economiste-digne-de-ce-nom-nicholas-georgescu-roegen&amp;catid=56:francais">Nicholas Georgescu-Roegen, économiste de génie</a>
      *		[3] => </p>
      *
 	 * @param unknown_type $article
@@ -106,11 +106,12 @@ class XLinkArticlesHelper {
 		$articleLinkSectionStartStringWithSepForPattern = ($isSpaceAddedlinkSectionStartString) ? $articleLinkSectionStartString . "[  ]{1}" : $articleLinkSectionStartString;
 		$articleLinkSectionStartStringWithSep = ($isSpaceAddedlinkSectionStartString) ? $articleLinkSectionStartString . ' ' : $articleLinkSectionStartString;
 		$pattern = "#($articleLinkSectionStartStringWithSepForPattern)(.+)(</p>)#";
-		preg_match ( $pattern, $article->introtext, $matches );
+		$introTextDecoded = html_entity_decode($article->introtext);
+		preg_match ( $pattern, $introTextDecoded, $matches );
 		
 		if (count ( $matches ) == 0) {
 			$pattern = "#($articleLinkSectionStartString)(</p>)#";
-			preg_match ( $pattern, $article->introtext, $matches );
+			preg_match ( $pattern, $introTextDecoded, $matches );
 			if (count ( $matches ) == 0) {
 				$userMessageArray [] = '!!! ' . sprintf(JText::_('LINK_SECTION_NOT_FOUND_IN_ARTICLE'), $articleLinkSectionStartStringWithSep, $article->id, $article->title, $noEcouterSectionFoundMsg);
 			} else {
