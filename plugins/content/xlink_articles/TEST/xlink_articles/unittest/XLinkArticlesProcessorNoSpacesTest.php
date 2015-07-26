@@ -36,10 +36,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_B = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article B.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également:<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_B, $targetArticle_B->introtext, '$targetArticle_B->introtext' );
 				
@@ -51,10 +51,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_C = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article C.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+						"<p>Ecouter également:<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a>,<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_C, $targetArticle_C->introtext, '$targetArticle_C->introtext' );
 		
@@ -66,10 +66,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_D = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article D.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+						"<p>Ecouter également:<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a>,<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_D, $targetArticle_D->introtext, '$targetArticle_D->introtext' );
 		
@@ -81,7 +81,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_H = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article H.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
 						"<p>A voir</p>";
@@ -95,7 +95,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_I = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article I.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
 						"<p>A voir</p>";
@@ -109,10 +109,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_J = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article J.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_J, $targetArticle_J->introtext, '$targetArticle_J->introtext' );
 
@@ -124,7 +124,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_K = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article K. Xlink to A no comma to remove</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
 						"<p>Ecouter également:</p>\n" .
@@ -139,10 +139,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_G = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article G. Xlink to A placed left to remove</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+						"<p>Ecouter également:<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_G, $targetArticle_G->introtext, '$targetArticle_G->introtext' );
 		
@@ -154,10 +154,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_F = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article F. Xlink to A placed right to remove</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a></p>\n" .
+						"<p>Ecouter également:<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=3:c\">C</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_F, $targetArticle_F->introtext, '$targetArticle_F->introtext' );
 		
@@ -219,10 +219,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_B = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article B.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également:<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_B, $targetArticle_B->introtext, '$targetArticle_B->introtext' );
 
@@ -234,10 +234,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_C = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article C.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>,<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a>,<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_C, $targetArticle_C->introtext, '$targetArticle_C->introtext' );
 				
@@ -249,10 +249,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_D = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article D.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>,<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=3:c\">C</a>,<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a>,<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_D, $targetArticle_D->introtext, '$targetArticle_D->introtext' );
 		
@@ -264,7 +264,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_H = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article H.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
 						"<p>A voir</p>";
@@ -278,7 +278,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_I = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article I.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
 						"<p>A voir</p>";
@@ -292,10 +292,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_J = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article J.</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>\n" .
+						"<p>Ecouter également:<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_J, $targetArticle_J->introtext, '$targetArticle_J->introtext' );
 
@@ -307,7 +307,7 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_K = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article K. Xlink to A no comma to remove</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
 						"<p>Ecouter également:</p>\n" .
@@ -322,10 +322,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_G = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article G. Xlink to A placed left to remove</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a></p>\n" .
+						"<p>Ecouter également:<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_G, $targetArticle_G->introtext, '$targetArticle_G->introtext' );
 		
@@ -337,10 +337,10 @@ class XLinkArticlesProcessorNoSpacesTest extends XLinkArticlesTestBase {
 		$expIntroText_F = "<p>Année: 2006</p>\n" .
 						"<p>Durée: 40' 57''</p>\n" .
 						"<p>Article F. Xlink to A placed right to remove</p>\n" .
-						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&amp;sid=10381313&amp;cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
+						"<p>Source: <a href=\"http://histoirevivante.rsr.ch/index.html?siteSect=1005&sid=10381313&cKey=1236843106000\" target=\"_blank\">RSR - Histoire Vivante: Paroles de démographes </a></p>\n" . 
 						"<p>{audio}/attachments/XXX{/audio}</p>\n" .
 						"<div style=\"visibility: hidden; height: 0px;\">{enclose XXX}</div>\n" .
-						"<p>Ecouter également:<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a></p>\n" .
+						"<p>Ecouter également:<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=3:c\">C</a></p>\n" .
 						"<p>A voir</p>";
 		$this->assertEquals ( $expIntroText_F, $targetArticle_F->introtext, '$targetArticle_F->introtext' );
 	

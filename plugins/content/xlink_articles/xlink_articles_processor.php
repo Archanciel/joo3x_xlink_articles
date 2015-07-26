@@ -94,7 +94,7 @@ class XlinkArticlesProcessor {
 		$sourceArticleCatIdAlias = $this->buildArticleCatIdAlias ($article);
 		$sourceArticleIdAlias = $this->buildArticleIdAlias ($article);
 
-		return "<a href=\"index.php?option=com_content&amp;view=article&amp;$sourceArticleCatIdAlias&amp;$sourceArticleIdAlias\">$articleTitle</a>";
+		return "<a href=\"index.php?option=com_content&view=article&$sourceArticleCatIdAlias&$sourceArticleIdAlias\">$articleTitle</a>";
 	}
 
 	/**
