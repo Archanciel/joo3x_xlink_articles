@@ -90,11 +90,12 @@ class XlinkArticlesProcessor {
 	 */
 	private function buildLinkToArticle($article) {
 		$articleTitle = $article->title;
+		$articleTitleEncoded = htmlentities($articleTitle);
 
 		$sourceArticleCatIdAlias = $this->buildArticleCatIdAlias ($article);
 		$sourceArticleIdAlias = $this->buildArticleIdAlias ($article);
 
-		return "<a href=\"index.php?option=com_content&view=article&$sourceArticleCatIdAlias&$sourceArticleIdAlias\">$articleTitle</a>";
+		return "<a href=\"index.php?option=com_content&amp;view=article&amp;$sourceArticleCatIdAlias&amp;$sourceArticleIdAlias\">$articleTitleEncoded</a>";
 	}
 
 	/**
@@ -143,7 +144,7 @@ class XlinkArticlesProcessor {
 
 		$linksInLinkSection = trim($linkSectionComponents [2],"\xa0");
 
-		$targetArticleIntroText = html_entity_decode($targetArticle->introtext);
+		$targetArticleIntroText = $targetArticle->introtext;
 		$found = strpos ( $targetArticleIntroText, $sourceArticleIdAlias );
 
 		if ($found === false) {
@@ -159,7 +160,7 @@ class XlinkArticlesProcessor {
 				$newLinksInLinkSection = $linksInLinkSection . $linkSeparator . $sourceArticleLink;
 			}
 
-			$articleLinkSectionStartStringWithSep = ($this->isSpaceAddedlinkSeparator) ? $this->linkSectionStartString . ' ' : $this->linkSectionStartString;
+			$articleLinkSectionStartStringWithSep = ($this->isSpaceAddedlinkSeparator) ? htmlentities($this->linkSectionStartString) . ' ' : htmlentities($this->linkSectionStartString);
 			$newLinkSection = $articleLinkSectionStartStringWithSep . $newLinksInLinkSection . $linkSectionComponents [3];
 			$newIntroText = str_replace ( $oldLinkSection, $newLinkSection, $targetArticleIntroText );
 			$targetArticle->introtext = $newIntroText;
@@ -190,7 +191,7 @@ class XlinkArticlesProcessor {
 			return;
 		}
 
-		$targetArticleIntroText = html_entity_decode($targetArticle->introtext);
+		$targetArticleIntroText = $targetArticle->introtext;
 		$found = strpos ( $targetArticleIntroText, $sourceArticleIdAlias );
 
 		if ($found === false) {
