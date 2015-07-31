@@ -14,7 +14,7 @@ class XLinkArticlesHelper {
 		$skippedLinkIds = array();
 		
 		foreach ( $linksArray as $link ) {
-			preg_match ( "#&(id|Itemid)=(\d+)#", $link, $matches );
+			preg_match ( "#&amp;(id|Itemid)=(\d+)#", $link, $matches );
 			
 			if (preg_match ( "#class=\"LK\"#", $link ) == 1) {
 				$linkIds [] = $matches [2];
@@ -102,21 +102,22 @@ class XLinkArticlesHelper {
 	 * @param unknown_type $noEcouterSectionFoundMsg
 	 * @param unknown_type $userMessageArray	passed by reference !
 	 */
-	public  static function getLinkSectionComponents($article, $articleLinkSectionStartString, $isSpaceAddedlinkSectionStartString, $noEcouterSectionFoundMsg, &$userMessageArray) {
-		$articleLinkSectionStartStringWithSepForPattern = ($isSpaceAddedlinkSectionStartString) ? $articleLinkSectionStartString . "[  ]{1}" : $articleLinkSectionStartString;
-		$articleLinkSectionStartStringWithSep = ($isSpaceAddedlinkSectionStartString) ? $articleLinkSectionStartString . ' ' : $articleLinkSectionStartString;
+	public static function getLinkSectionComponents($article, $articleLinkSectionStartString, $isSpaceAddedlinkSectionStartString, $noEcouterSectionFoundMsg, &$userMessageArray) {
+		$articleLinkSectionStartStringEncoded = htmlentities($articleLinkSectionStartString);
+		$articleLinkSectionStartStringWithSepForPattern = ($isSpaceAddedlinkSectionStartString) ? $articleLinkSectionStartStringEncoded . "[  ]{1}" : $articleLinkSectionStartStringEncoded;
+		$articleLinkSectionStartStringWithSep = ($isSpaceAddedlinkSectionStartString) ? $articleLinkSectionStartStringEncoded . ' ' : $articleLinkSectionStartStringEncoded;
 		$pattern = "#($articleLinkSectionStartStringWithSepForPattern)(.+)(</p>)#";
-		$introTextDecoded = html_entity_decode($article->introtext);
-		preg_match ( $pattern, $introTextDecoded, $matches );
+		$introText = $article->introtext;
+		preg_match ( $pattern, $introText, $matches );
 		
 		if (count ( $matches ) == 0) {
-			$pattern = "#($articleLinkSectionStartString)(</p>)#";
-			preg_match ( $pattern, $introTextDecoded, $matches );
+			$pattern = "#($articleLinkSectionStartStringEncoded)(</p>)#";
+			preg_match ( $pattern, $introText, $matches );
 			if (count ( $matches ) == 0) {
 				$userMessageArray [] = '!!! ' . sprintf(JText::_('LINK_SECTION_NOT_FOUND_IN_ARTICLE'), $articleLinkSectionStartStringWithSep, $article->id, $article->title, $noEcouterSectionFoundMsg);
 			} else {
 				// adding an empty link section to the returned matches
-				$matches = array("$articleLinkSectionStartString</p>", $articleLinkSectionStartStringWithSep, "", "</p>");
+				$matches = array("$articleLinkSectionStartStringEncoded</p>", $articleLinkSectionStartStringWithSep, "", "</p>");
 			}
 		}
 
