@@ -98,21 +98,21 @@ class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
 	}
 	
 	public function testRebuidLinksWithoutLinkOnSourceArticleTwoLinksWithOneLinkOnA() {
-		$newLinkString = XLinkArticlesHelper::rebuidLinksWithoutLinkOnSourceArticle("id=1:a", array("<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a>", "<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a>"), $this->linkSeparator);
+		$newLinkString = XLinkArticlesHelper::rebuidLinksWithoutLinkOnSourceArticle("id=1:a", array("<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>", "<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>"), $this->linkSeparator);
 		
-		$this->assertEquals("<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a>", $newLinkString);
+		$this->assertEquals("<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>", $newLinkString);
 	}
 	
 	public function testRebuidLinksWithoutLinkOnSourceArticleOneLinkOnA() {
-		$newLinkString = XLinkArticlesHelper::rebuidLinksWithoutLinkOnSourceArticle("id=1:a", array("<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a>"), $this->linkSeparator);
+		$newLinkString = XLinkArticlesHelper::rebuidLinksWithoutLinkOnSourceArticle("id=1:a", array("<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>"), $this->linkSeparator);
 		
 		$this->assertEquals("", $newLinkString);
 	}
 	
 	public function testRebuidLinksWithoutLinkOnSourceArticleOneLinkOnB() {
-		$newLinkString = XLinkArticlesHelper::rebuidLinksWithoutLinkOnSourceArticle("id=1:a", array("<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a>"), $this->linkSeparator);
+		$newLinkString = XLinkArticlesHelper::rebuidLinksWithoutLinkOnSourceArticle("id=1:a", array("<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>"), $this->linkSeparator);
 		
-		$this->assertEquals("<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a>", $newLinkString);
+		$this->assertEquals("<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>", $newLinkString);
 	}
 	
 	public function testRebuidLinksWithoutLinkOnSourceArticleNoLinks() {
@@ -128,7 +128,7 @@ class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
 		
 		$newLinkString = XLinkArticlesHelper::rebuidLinksWithoutLinkOnSourceArticle("id=1:a", $linksArray, $this->linkSeparator);
 		
-		$this->assertEquals("<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=2:b\">B</a>", $newLinkString);
+		$this->assertEquals("<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=2:b\">B</a>", $newLinkString);
 	}
 	
 	public function testRebuidLinksWithoutLinkOnArticleF() {
@@ -138,7 +138,7 @@ class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
 		
 		$newLinkString = XLinkArticlesHelper::rebuidLinksWithoutLinkOnSourceArticle("id=1:a", $linksArray, $this->linkSeparator);
 		
-		$this->assertEquals("<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=3:c\">C</a>", $newLinkString);
+		$this->assertEquals("<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>", $newLinkString);
 	}
 	
 	public function testGetLinkSectionComponentsWhereClassLK() {
@@ -147,9 +147,9 @@ class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
 		$components = XLinkArticlesHelper::getLinkSectionComponents($targetArticle_J, $this->linkSectionStartString, $this->isSpaceAddedlinkSectionStartString, "not found", $this->userMessageArray);
 
 		$this->assertEquals(4, count($components));
-		$this->assertEquals($this->linkSectionStartString . $this->linkSectionStartStringSepOneSpace . "<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a></p>",$components[0],'$components[0]');
-		$this->assertEquals($this->linkSectionStartString . $this->linkSectionStartStringSepOneSpace,$components[1],'$components[1]');
-		$this->assertEquals("<a class=\"LK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a>",$components[2],'$components[2]');
+		$this->assertEquals("Ecouter &eacute;galement" . $this->linkSectionStartStringSepOneSpace . "<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>",$components[0],'$components[0]');
+		$this->assertEquals("Ecouter &eacute;galement" . $this->linkSectionStartStringSepOneSpace,$components[1],'$components[1]');
+		$this->assertEquals("<a class=\"LK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>",$components[2],'$components[2]');
 		$this->assertEquals("</p>",$components[3],'$components[3]');
 	}
 		
@@ -159,9 +159,9 @@ class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
 		$components = XLinkArticlesHelper::getLinkSectionComponents($targetArticle_K, $this->linkSectionStartString, $this->isSpaceAddedlinkSectionStartString, "not found", $this->userMessageArray);
 
 		$this->assertEquals(4, count($components));
-		$this->assertEquals($this->linkSectionStartString . $this->linkSectionStartStringSepOneSpace . "<a class=\"ULK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a></p>",$components[0],'$components[0]');
-		$this->assertEquals($this->linkSectionStartString . $this->linkSectionStartStringSepOneSpace,$components[1],'$components[1]');
-		$this->assertEquals("<a class=\"ULK\" href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a>",$components[2],'$components[2]');
+		$this->assertEquals("Ecouter &eacute;galement" . $this->linkSectionStartStringSepOneSpace . "<a class=\"ULK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>",$components[0],'$components[0]');
+		$this->assertEquals("Ecouter &eacute;galement" . $this->linkSectionStartStringSepOneSpace,$components[1],'$components[1]');
+		$this->assertEquals("<a class=\"ULK\" href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>",$components[2],'$components[2]');
 		$this->assertEquals("</p>",$components[3],'$components[3]');
 	}
 		
@@ -171,9 +171,9 @@ class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
 		$components = XLinkArticlesHelper::getLinkSectionComponents($targetArticle_F, $this->linkSectionStartString, $this->isSpaceAddedlinkSectionStartString, "not found", $this->userMessageArray);
 
 		$this->assertEquals(4, count($components));
-		$this->assertEquals($this->linkSectionStartString . $this->linkSectionStartStringSepOneSpace . "<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=3:c\">C</a>, <a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a></p>",$components[0],'$components[0]');
-		$this->assertEquals($this->linkSectionStartString . $this->linkSectionStartStringSepOneSpace,$components[1],'$components[1]');
-		$this->assertEquals("<a href=\"index.php?option=com_content&view=article&catid=103:francais&id=3:c\">C</a>, <a href=\"index.php?option=com_content&view=article&catid=103:francais&id=1:a\">A</a>",$components[2],'$components[2]');
+		$this->assertEquals("Ecouter &eacute;galement" . $this->linkSectionStartStringSepOneSpace . "<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>, <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a></p>",$components[0],'$components[0]');
+		$this->assertEquals("Ecouter &eacute;galement" . $this->linkSectionStartStringSepOneSpace,$components[1],'$components[1]');
+		$this->assertEquals("<a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=3:c\">C</a>, <a href=\"index.php?option=com_content&amp;view=article&amp;catid=103:francais&amp;id=1:a\">A</a>",$components[2],'$components[2]');
 		$this->assertEquals("</p>",$components[3],'$components[3]');
 	}
 		
@@ -183,8 +183,8 @@ class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
 		$components = XLinkArticlesHelper::getLinkSectionComponents($targetArticle_E, $this->linkSectionStartString, $this->isSpaceAddedlinkSectionStartString, "No change performed !", $this->userMessageArray);
 
 		$this->assertEquals(4, count($components));
-		$this->assertEquals($this->linkSectionStartString . "</p>",$components[0],'$components[0]');
-		$this->assertEquals($this->linkSectionStartString . $this->linkSectionStartStringSepOneSpace,$components[1],'$components[1]');
+		$this->assertEquals("Ecouter &eacute;galement" . "</p>",$components[0],'$components[0]');
+		$this->assertEquals("Ecouter &eacute;galement" . $this->linkSectionStartStringSepOneSpace,$components[1],'$components[1]');
 		$this->assertEquals("",$components[2],'$components[2]');
 		$this->assertEquals("</p>",$components[3],'$components[3]');
 		$this->assertEquals ( 0 , count ( $this->userMessageArray), 'count ( $this->userMessageArray)' );
@@ -198,7 +198,7 @@ class XLinkArticlesHelperTest extends XLinkArticlesTestBase {
 
 		$this->assertEquals(0, count($components));
 		$this->assertEquals ( 1 , count ( $this->userMessageArray), 'count ( $this->userMessageArray)' );
-		$this->assertEquals ( "!!! 'Ecouter également ' section not found in article 8 - H. No change performed !", $this->userMessageArray[0], '$this->userMessageArray[0]' );
+		$this->assertEquals ( "!!! 'Ecouter &eacute;galement ' section not found in article 8 - H. No change performed !", $this->userMessageArray[0], '$this->userMessageArray[0]' );
 	}
 	
 	/**
