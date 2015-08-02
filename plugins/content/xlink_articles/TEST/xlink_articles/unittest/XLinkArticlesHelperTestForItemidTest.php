@@ -3,6 +3,13 @@
 require_once dirname ( __FILE__ ) . '\..\baseclass\XLinkArticlesTestBase.php';
 require_once PLG_XLINK_ARTICLES_PATH . '\helper.php';
 
+/**
+ * This test case ensures that the XLinkArticlesHelper class handles correctly the id of the linked
+ * target articles. In Joomla 3, those id's are no longer specified with 'id=', but with 'Itemid=',
+ * like in <a href="index.php?option=com_content&amp;view=article&amp;id=580&amp;catid=77&amp;Itemid=118">A</a>.
+ *  
+ * @author Jean-Pierre
+ */
 class XLinkArticlesHelperTestForItemidTest extends XLinkArticlesTestBase {
 	
 	private $linkSectionStartString;
@@ -26,6 +33,9 @@ class XLinkArticlesHelperTestForItemidTest extends XLinkArticlesTestBase {
 		$this->isSpaceAddedLinkSeparator = 1;
 	}
 	
+	/**
+	 * Tests that the XLinkArticlesHelper class handles correctly the Itemid= joo3 id attribute.
+	 */
 	public function testGetLinkedArticlesIdsMultipleLinksAllKinds() {
 		$sourceArticle_A = JTable::getInstance ( 'content' );
 		$sourceArticle_A->load ( 1 );
