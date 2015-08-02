@@ -112,7 +112,10 @@ class XlinkArticlesProcessor {
 	}
 
 	/**
-	 * Builds the article id / article alias part of the link to the article.
+	 * Builds the article id / article alias part of the link to the article. Note that when linking
+	 * to another article with the Joo3 editor, the alias is not inserted. Though, if you add the 
+	 * alias manually using ':' + <alias>, this won't hurt ! So, I leave thed alias addition as
+	 * it is since the Joo15 version of the plugin !
 	 */
 	private function buildArticleIdAlias($article) {
 		return "id=$article->id:$article->alias";

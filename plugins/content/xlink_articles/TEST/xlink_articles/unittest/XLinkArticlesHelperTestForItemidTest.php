@@ -7,7 +7,9 @@ require_once PLG_XLINK_ARTICLES_PATH . '\helper.php';
  * This test case ensures that the XLinkArticlesHelper class handles correctly the id of the linked
  * target articles. In Joomla 3, those id's are no longer specified with 'id=', but with 'Itemid=',
  * like in <a href="index.php?option=com_content&amp;view=article&amp;id=580&amp;catid=77&amp;Itemid=118">A</a>.
- *  
+ * 
+ * Notice that when linking to another article with the Joo3 editor, the alias is not inserted. Though,
+ * if you add the alias manually using ':' + alias, this won't hurt !
  * @author Jean-Pierre
  */
 class XLinkArticlesHelperTestForItemidTest extends XLinkArticlesTestBase {
